@@ -1,7 +1,6 @@
 /** @format */
-import 'hbs';
-
 import express from 'express';
+import hbs from 'hbs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -11,6 +10,9 @@ const port = 8080;
 
 // instance of express.
 const app = express();
+
+// HBS
+hbs.registerPartials(path.join(__dirname, '/views/partials')); // To allow us to use partials
 
 // To use handlebars "hbs"
 app.set('view engine', 'hbs');
@@ -27,11 +29,18 @@ app.get('/', (req, res) => {
 });
 
 app.get('/generic', (req, res) => {
-	res.sendFile(path.join(__dirname, '/public', 'generic.html')); // To show our generic page.
+	res.render('generic', {
+		name: 'Diego Pagini',
+		title: 'Learning Node',
+	});
+	// To show our generic page.
 });
 
 app.get('/elements', (req, res) => {
-	res.sendFile(path.join(__dirname, '/public', 'elements.html')); // To show our elements page.
+	res.render('elements', {
+		name: 'Diego Pagini',
+		title: 'Learning Node',
+	}); // To show our elements page.
 });
 
 app.get('*', (req, res) => {
