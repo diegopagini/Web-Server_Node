@@ -20,7 +20,10 @@ app.use(express.static('public')); // To use the content inside our public folde
 
 // Routes
 app.get('/', (req, res) => {
-	res.render('home');
+	res.render('home', {
+		name: 'Diego Pagini',
+		title: 'Learning Node',
+	}); // render to "render" the app
 });
 
 app.get('/generic', (req, res) => {
