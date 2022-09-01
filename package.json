@@ -1,0 +1,11 @@
+{
+	"name": "webserver",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "app.js",
+	"scripts": {},
+	"keywords": [],
+	"author": "Diego Pagini",
+	"license": "ISC"
+}
