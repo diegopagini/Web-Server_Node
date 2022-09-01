@@ -1,4 +1,6 @@
 /** @format */
+import 'hbs';
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,12 +12,15 @@ const port = 8080;
 // instance of express.
 const app = express();
 
+// To use handlebars "hbs"
+app.set('view engine', 'hbs');
+
 // To serve static content:
 app.use(express.static('public')); // To use the content inside our public folder. This will be rendered in "/" path.
 
 // Routes
-app.get('/index', (req, res) => {
-	res.sendFile(path.join(__dirname, '/public', 'index.html')); // To show our index page.
+app.get('/', (req, res) => {
+	res.render('home');
 });
 
 app.get('/generic', (req, res) => {
