@@ -1,12 +1,16 @@
 /** @format */
+import dotenv from 'dotenv';
 import express from 'express';
 import hbs from 'hbs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const port = 8080;
+dotenv.config(); // To allow us to use environment variables
+
+const __filename = fileURLToPath(import.meta.url); // To allow us to use __filename with type: "module" in package.json
+const __dirname = path.dirname(__filename); // To allow us to use __dirname with type: "module" in package.json
+
+const port = process.env.PORT; // Our variable declared in .env
 
 // instance of express.
 const app = express();
@@ -24,14 +28,14 @@ app.use(express.static('public')); // To use the content inside our public folde
 app.get('/', (req, res) => {
 	res.render('home', {
 		name: 'Diego Pagini',
-		title: 'Learning Node',
+		title: 'Home',
 	}); // render to "render" the app
 });
 
 app.get('/generic', (req, res) => {
 	res.render('generic', {
 		name: 'Diego Pagini',
-		title: 'Learning Node',
+		title: 'Generic',
 	});
 	// To show our generic page.
 });
@@ -39,7 +43,7 @@ app.get('/generic', (req, res) => {
 app.get('/elements', (req, res) => {
 	res.render('elements', {
 		name: 'Diego Pagini',
-		title: 'Learning Node',
+		title: 'Elements',
 	}); // To show our elements page.
 });
 
@@ -47,4 +51,4 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '/public', '404.html')); // To show our 404 page.
 });
 
-app.listen(port);
+app.listen(port); // To serve our application.

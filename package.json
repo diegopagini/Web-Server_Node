@@ -1,14 +1,21 @@
 {
 	"name": "webserver",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A web server application using node",
 	"type": "module",
 	"main": "app.js",
-	"scripts": {},
-	"keywords": [],
+	"scripts": {
+		"start": "node app.js"
+	},
+	"keywords": [
+		"node",
+		"hablebars",
+		"hbs"
+	],
 	"author": "Diego Pagini",
 	"license": "ISC",
 	"dependencies": {
+		"dotenv": "^16.0.2",
 		"express": "^4.18.1",
 		"hbs": "^4.2.0"
 	}
