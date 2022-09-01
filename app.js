@@ -1,13 +1,15 @@
 /** @format */
-import http from 'http';
+import express from 'express';
 
-// Package from node.
+const app = express();
 
-http
-	.createServer((request, response) => {
-		response.write('Hola Mundo');
-		response.end();
-	})
-	.listen(8080);
+// Routes
+app.get('/', (req, res) => {
+	res.send('Home page');
+});
 
-console.log('Escuchando el puerto ', 8080);
+app.get('/hello-world', (req, res) => {
+	res.send('Hello World from /hello-world route');
+});
+
+app.listen(8080);
